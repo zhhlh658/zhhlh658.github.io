@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机图片墙</title>
+    <style>
+        body { font-family: system-ui; background: #f2f2f2; padding: 12px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: 10px; }
+        .gallery img { width: 100%; height: 150px; object-fit: cover; border-radius: 12px; }
+        h1 { text-align: center; font-size: 1.4rem; margin: 0 0 6px; }
+        .info { text-align: center; color: gray; font-size: 0.8rem; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+    <h1>🖼️ 随机图片墙</h1>
+    <div class="info">✨ 每次打开顺序都会重新打乱 ✨</div>
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        const imageUrls = [
+     "https://s3.bmp.ovh/2026/05/14/qWr8c3ZZ.jpg",
+    "https://s3.bmp.ovh/2026/05/14/CXkDZLCf.jpg",
+    "https://s3.bmp.ovh/2026/05/14/qTgAPaXF.jpg",
+    "https://s3.bmp.ovh/2026/05/14/5KSGOEwm.jpg",
+    "https://s3.bmp.ovh/2026/05/14/JgdTw8j2.jpg",
+    "https://s3.bmp.ovh/2026/05/14/kalYovt2.jpg",
+    "https://s3.bmp.ovh/2026/05/14/I09l5PTf.jpg",
+    "https://s3.bmp.ovh/2026/05/14/LcmZQsz3.jpg",
+    "https://s3.bmp.ovh/2026/05/14/7KxZD4kP.jpg",
+    "https://s3.bmp.ovh/2026/05/14/quDNchFy.jpg",
+    "https://s3.bmp.ovh/2026/05/14/b0GBKQ06.jpg",
+    "https://s3.bmp.ovh/2026/05/14/DPiDjjtc.jpg",
+    "https://s3.bmp.ovh/2026/05/14/ZErz2B32.jpg",
+    "https://s3.bmp.ovh/2026/05/14/MDQVkk9t.jpg",
+    "https://s3.bmp.ovh/2026/05/14/x7ijsuAM.jpg",
+    "https://s3.bmp.ovh/2026/05/14/EZFsrbq4.jpg",
+    "https://s3.bmp.ovh/2026/05/14/66J4Eq8t.jpg",
+    "https://s3.bmp.ovh/2026/05/14/lAE0ecm5.jpg",
+    "https://s3.bmp.ovh/2026/05/14/lL2u0Ufk.jpg",
+    "https://s3.bmp.ovh/2026/05/14/mhx4Efwp.jpg",
+    "https://s3.bmp.ovh/2026/05/14/y3qN8kGo.jpg",
+    "https://s3.bmp.ovh/2026/05/14/eNtpeXvt.jpg",
+    "https://s3.bmp.ovh/2026/05/14/1zFyRMr8.jpg",
+    "https://s3.bmp.ovh/2026/05/14/lNwedGMv.jpg",
+    "https://s3.bmp.ovh/2026/05/14/Ygfh5QYR.jpg",
+    "https://s3.bmp.ovh/2026/05/14/qGc57Sg4.jpg",
+    "https://s3.bmp.ovh/2026/05/14/Bm4x1mOR.jpg",
+    "https://s3.bmp.ovh/2026/05/14/1Qbsb5w3.jpg",
+    "https://s3.bmp.ovh/2026/05/14/IAEZMaWQ.jpg",
+    "https://s3.bmp.ovh/2026/05/14/Jan9JfGf.jpg",
+    "https://s3.bmp.ovh/2026/05/14/ZvtQoHb3.jpg",
+    "https://s3.bmp.ovh/2026/05/14/ojQnh0li.jpg",
+    "https://s3.bmp.ovh/2026/05/14/rhUaQDpj.jpg",
+    "https://s3.bmp.ovh/2026/05/14/d9lZhwbG.jpg",
+    "https://s3.bmp.ovh/2026/05/14/jhxiQumB.jpg",
+    "https://s3.bmp.ovh/2026/05/14/cM67ZXTi.jpg",
+    "https://s3.bmp.ovh/2026/05/14/79r78pXM.jpg",
+    "https://s3.bmp.ovh/2026/05/14/74rRRShP.jpg",
+    "https://s3.bmp.ovh/2026/05/14/bHbcY5we.jpg",
+    "https://s3.bmp.ovh/2026/05/14/iA5wKL6B.jpg"
+           
+            
+		     
+        ];
+
+        function shuffleArray(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        function displayImages() {
+            const shuffled = shuffleArray([...imageUrls]);
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = '';
+            shuffled.forEach(url => {
+                const img = document.createElement('img');
+                img.src = url;
+                img.loading = 'lazy';
+                gallery.appendChild(img);
+            });
+        }
+
+        displayImages();
+    </script>
+</body>
+</html>
